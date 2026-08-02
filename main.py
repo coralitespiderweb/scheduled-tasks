@@ -38,7 +38,7 @@ data = pandas.read_csv("birthdays.csv")
 #     (12, 24): Angela,angela@email.com,1995,12,24
 # }
 
-birthdays_dict = {(row["month"], row["day"]): f"{row['name']},{row['email']},{row['year']},{row['month']},{row['day']}"
+birthdays_dict = {(row["month"], row["day"]): f"{row['name']},{row['email']},{row['month']},{row['day']}"
                   for index, row in data.iterrows()}
 
 #HINT 4: Then you could compare and see if today's month/day tuple matches one of the keys in birthday_dict like this:
@@ -50,10 +50,7 @@ if today in birthdays_dict:
     with open (f"letter_templates/letter_{letter_num}.txt", "r") as file:
         content = file.read()
 
-    new_content = content.replace("[NAME]", birthdays_dict[today].split(",")[0])
-
-    with open(f"letter_templates/letter_{letter_num}.txt", "w") as file:
-        file.write(new_content)
+    content = content.replace("[NAME]", birthdays_dict[today].split(",")[0])
 
 # 3. If there is a match, pick a random letter (letter_1.txt/letter_2.txt/letter_3.txt) from letter_templates and replace the [NAME] with the person's actual name from birthdays.csv
 # HINT 1: Think about the relative file path to open each letter. 
