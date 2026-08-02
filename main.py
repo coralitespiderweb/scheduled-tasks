@@ -73,7 +73,7 @@ with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
     connection.starttls()
     connection.login(user=MY_EMAIL, password=MY_PASSWORD)
     connection.sendmail(
-        from_addr="wenxin.zhou@warriorlife.net",
+        from_addr=MY_EMAIL,
         to_addrs=birthdays_dict[today].split(",")[1],
         msg=f"Subject: Happy Birthday\n\n{content}"
     )
