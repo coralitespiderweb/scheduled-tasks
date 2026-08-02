@@ -4,7 +4,7 @@ import pandas
 import random
 import smtplib
 
-password = os.environ.get("password")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 MY_EMAIL = os.environ.get("MY_EMAIL")
 
 ##################### Normal Starting Project ######################
@@ -71,7 +71,7 @@ with open (f"letter_templates/letter_{letter_num}.txt", "r") as file:
 
 with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
     connection.starttls()
-    connection.login(user=MY_EMAIL, password=password)
+    connection.login(user=MY_EMAIL, password=MY_PASSWORD)
     connection.sendmail(
         from_addr="wenxin.zhou@warriorlife.net",
         to_addrs=birthdays_dict[today].split(",")[1],
